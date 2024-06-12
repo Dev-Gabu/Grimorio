@@ -7,4 +7,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', Logout.as_view(),name='logout'),
     path('item/', include('itens.urls'), name='itens'),
+    path('ficha/',include('fichas.urls'), name="fichas")
 ]

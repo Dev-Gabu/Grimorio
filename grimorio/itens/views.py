@@ -31,7 +31,7 @@ class FotoItem(View):
         except Exception as exception:
              raise exception
         return 0
-    
+
 class CriarItens(CreateView):
 
     model = Item

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'fichas.apps.FichasConfig',
     'itens.apps.ItensConfig',
     'django.contrib.admin',
     'django.contrib.auth',
