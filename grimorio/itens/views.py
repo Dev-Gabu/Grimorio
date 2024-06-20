@@ -20,17 +20,17 @@ class ListarItens(ListView):
             query = queryset.filter(modelo_icontains=pesquisa)
         return queryset
     
-class FotoItem(View):
+# class FotoItem(View):
 
-    def get(self, request, arquivo):
-        try:
-            item = Item.objects.get(foto='item/fotos/{}'.format(arquivo))
-            return FileResponse(item.foto)
-        except ObjectDoesNotExist:
-             raise Http404("Foto não encontrada ou arquivo não autorizado")
-        except Exception as exception:
-             raise exception
-        return 0
+#     def get(self, request, arquivo):
+#         try:
+#             item = Item.objects.get(foto='item/fotos/{}'.format(arquivo))
+#             return FileResponse(item.foto)
+#         except ObjectDoesNotExist:
+#              raise Http404("Foto não encontrada ou arquivo não autorizado")
+#         except Exception as exception:
+#              raise exception
+#         return 0
 
 class CriarItens(CreateView):
 
@@ -39,13 +39,13 @@ class CriarItens(CreateView):
     template_name = 'item/novo.html'
     success_url = reverse_lazy('listar-itens')
 
-class EditarItens(LoginRequiredMixin, UpdateView):
+class EditarItens(UpdateView):
     model = Item
     form_class = FormularioItem
     template_name = 'item/editar.html'
     success_url = reverse_lazy('listar-itens')
 
-class DeletarItens(LoginRequiredMixin, DeleteView):
+class DeletarItens(DeleteView):
     model = Item
     template_name = 'item/deletar.html'
     success_url = reverse_lazy('listar-itens')

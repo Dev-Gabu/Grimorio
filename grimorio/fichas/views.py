@@ -11,7 +11,7 @@ class ListarFichas(ListView):
 
     model = Ficha
     context_object_name = 'fichas'
-    template_name = 'ficha/listar.html'
+    template_name = 'fichas/listar.html'
 
     def get_queryset(self, **kwargs):
         queryset =  Ficha.objects.all()
@@ -20,32 +20,33 @@ class ListarFichas(ListView):
             query = queryset.filter(modelo_icontains=pesquisa)
         return queryset
     
-class FotoFicha(View):
+# class FotoFicha(View):
 
-    def get(self, request, arquivo):
-        try:
-            ficha = Ficha.objects.get(foto='ficha/fotos/{}'.format(arquivo))
-            return FileResponse(ficha.foto)
-        except ObjectDoesNotExist:
-             raise Http404("Foto não encontrada ou arquivo não autorizado")
-        except Exception as exception:
-             raise exception
-        return 0
+#     def get(self, request, arquivo):
+#         try:
+#             #ficha = Ficha.objects.get(foto='fichas/fotos/{}'.format(arquivo))
+#             fichas = Ficha.objects.get(foto='fichas/fotos/Mirio_-_Humano.jpg')
+#             return FileResponse(fichas.foto)
+#         except ObjectDoesNotExist:
+#              raise Http404("Foto não encontrada ou arquivo não autorizado")
+#         except Exception as exception:
+#              raise exception
+#         return 0
 
 class CriarFichas(CreateView):
 
     model = Ficha
     form_class = FormularioFicha
-    template_name = 'ficha/novo.html'
+    template_name = 'fichas/novo.html'
     success_url = reverse_lazy('listar-fichas')
 
-class EditarFichas(LoginRequiredMixin, UpdateView):
+class EditarFichas(UpdateView):
     model = Ficha
     form_class = FormularioFicha
-    template_name = 'ficha/editar.html'
+    template_name = 'fichas/editar.html'
     success_url = reverse_lazy('listar-fichas')
 
-class DeletarFichas(LoginRequiredMixin, DeleteView):
+class DeletarFichas(DeleteView):
     model = Ficha
-    template_name = 'ficha/deletar.html'
+    template_name = 'fichas/deletar.html'
     success_url = reverse_lazy('listar-fichas')

@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+
+    {% block titulo %} Deletar Ficha{% endblock %}
+    
+    {% block content %}
+    <form action = '/fichas/deletar/{{ object.pk}}' method="post">
+        {% csrf_token %}
+
+        <center>
+            <div class = "alert alert-danger" role = 'alert'>
+                <p>Tem certeza que deseja excluir a ficha "{{ object }} ?"</p>
+            </div>
+            <input type="submit" value="Confirmar" class="btn btn-danger" />
+        </center>
+
+    </form>
+
+    {% endblock %}

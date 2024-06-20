@@ -1,0 +1,48 @@
+{% extends "../base.html" %}
+
+    {% block titulo %} Criar novo Ficha{% endblock %}
+    
+    {% block content %}
+        
+        
+        <div class="container mt-5">
+            <h1 class="mb-4">Criar novo Ficha</h1>
+            <form action = '/fichas/novo/' method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {% for error in field.errors %}
+                                    <p class="mb-0">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+
+                <!-- <select name="sistema" required="" id="id_sistema" onchange="alert('teste')">
+                    <option value="" selected="">---------</option>
+                  
+                    <option value="1">Dungeons and Dragons</option>
+                  
+                    <option value="2">Tormenta</option>
+                  
+                    <option value="3">Ordem Paranormal</option>
+                  
+                    <option value="4">WilderFeast</option>
+                  
+                    <option value="5">Pokemon Tabletop Adventures</option>
+                  
+                  </select> -->
+
+
+                <button type="submit" class="btn btn-primary">Criar</button>
+            </form>
+        </div>
+        
+
+    {% endblock %}
