@@ -1,7 +1,13 @@
-OPCOES_SISTEMA = (
-    (1, u'Dungeons and Dragons'),
-    (2, u'Tormenta'),
-    (3, u'Ordem Paranormal'),
-    (4, u'WilderFeast'),
-    (5, u'Pokemon Tabletop Adventures'),
+OPCOES_CLASSE = (
+    (1, u'Conjurador'),
+    (2, u'Invocador'),
+    (3, u'Mago Marcial'),
+    (4, u'Encantador'),
+)
+
+OPCOES_ELEMENTO = (
+    (1, u'Piro'),
+    (2, u'Aero'),
+    (3, u'Geo'),
+    (4, u'Hidro'),
 )

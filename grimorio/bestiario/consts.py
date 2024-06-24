@@ -1,0 +1,21 @@
+OPCOES_ELEMENTO = (
+    (1, u'Neutro'),
+    (2, u'Piro'),
+    (3, u'Aero'),
+    (4, u'Geo'),
+    (5, u'Hidro'),
+    (6, u'Metalo'),
+    (7, u'Electro'),
+    (8, u'Fito'),
+    (9, u'Crio'),
+    (10, u'Umbra'),
+    (11, u'Lumino'),
+    (12, u'Cristalo'),
+    (13, u'Vibro'),
+    (14, u'Aether'),
+    (15, u'Nether'),
+    (16, u'Cosmo'),
+    (17, u'Crono'),
+    (18, u'Psycho'),
+
+)

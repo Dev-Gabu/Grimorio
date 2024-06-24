@@ -1,6 +1,4 @@
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import FileResponse, Http404
+from grimorio.bibliotecas import LoginObrigatorio
 from django.shortcuts import render
 from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
 from fichas.models import Ficha
@@ -19,19 +17,6 @@ class ListarFichas(ListView):
         if pesquisa is not None:
             query = queryset.filter(modelo_icontains=pesquisa)
         return queryset
-    
-# class FotoFicha(View):
-
-#     def get(self, request, arquivo):
-#         try:
-#             #ficha = Ficha.objects.get(foto='fichas/fotos/{}'.format(arquivo))
-#             fichas = Ficha.objects.get(foto='fichas/fotos/Mirio_-_Humano.jpg')
-#             return FileResponse(fichas.foto)
-#         except ObjectDoesNotExist:
-#              raise Http404("Foto não encontrada ou arquivo não autorizado")
-#         except Exception as exception:
-#              raise exception
-#         return 0
 
 class CriarFichas(CreateView):
 

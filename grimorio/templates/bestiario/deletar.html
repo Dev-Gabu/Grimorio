@@ -1,0 +1,18 @@
+{% extends "../base.html" %}
+
+    {% block titulo %} Deletar Criatura{% endblock %}
+    
+    {% block content %}
+    <form action = '/bestiario/deletar/{{ object.pk}}' method="post">
+        {% csrf_token %}
+
+        <center>
+            <div class = "alert alert-danger" role = 'alert'>
+                <p>Tem certeza que deseja excluir a criatura "{{ object }} ?"</p>
+            </div>
+            <input type="submit" value="Confirmar" class="btn btn-danger" />
+        </center>
+
+    </form>
+
+    {% endblock %}
