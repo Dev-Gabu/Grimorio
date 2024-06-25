@@ -1,6 +1,6 @@
 from grimorio.bibliotecas import LoginObrigatorio
 from django.shortcuts import render
-from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
 from bestiario.models import Criatura
 from bestiario.forms import FormularioCriatura
 from django.urls import reverse_lazy
@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 class ListarCriaturas(ListView):
 
     model = Criatura
-    context_object_name = 'critaturas'
+    context_object_name = 'criaturas'
     template_name = 'bestiario/listar.html'
 
     def get_queryset(self, **kwargs):
@@ -17,6 +17,11 @@ class ListarCriaturas(ListView):
         if pesquisa is not None:
             query = queryset.filter(modelo_icontains=pesquisa)
         return queryset
+    
+class DetalhesCriaturas(DetailView):
+    model = Criatura
+    template_name = 'bestiario/detalhes.html'
+    context_object_name = 'criatura'
 
 class CriarCriaturas(CreateView):
 

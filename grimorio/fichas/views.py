@@ -1,6 +1,6 @@
 from grimorio.bibliotecas import LoginObrigatorio
 from django.shortcuts import render
-from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
 from fichas.models import Ficha
 from fichas.forms import FormularioFicha
 from django.urls import reverse_lazy
@@ -16,7 +16,14 @@ class ListarFichas(ListView):
         pesquisa = self.request.GET.get('pesquisa', None)
         if pesquisa is not None:
             query = queryset.filter(modelo_icontains=pesquisa)
+
         return queryset
+    
+class DetalhesFichas(DetailView):
+
+    model = Ficha
+    template_name = 'fichas/detalhes.html'
+    context_object_name = 'ficha'
 
 class CriarFichas(CreateView):
 
