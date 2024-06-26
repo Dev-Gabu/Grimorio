@@ -6,14 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8000/item/api/items';
+  private itemUrl = 'http://localhost:8000/item/api/items';
+  private fichaUrl = 'http://localhost:8000/ficha/api/fichas';
+  private criaturaUrl = 'http://localhost:8000/bestiario/api/criaturas';
 
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.itemUrl);
   }
-  getItemById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}${id}/`);
+  
+  getFichas(): Observable<any> {
+    return this.http.get(this.fichaUrl);
   }
+
+  getCriaturas(): Observable<any> {
+    return this.http.get(this.criaturaUrl);
+  }
+
 }

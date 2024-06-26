@@ -4,6 +4,8 @@ from django.views.generic import View, ListView, CreateView, UpdateView, DeleteV
 from bestiario.models import Criatura
 from bestiario.forms import FormularioCriatura
 from django.urls import reverse_lazy
+from bestiario.serializers import CriaturaSerializer
+from rest_framework import viewsets
 
 class ListarCriaturas(ListView):
 
@@ -40,3 +42,7 @@ class DeletarCriaturas(DeleteView):
     model = Criatura
     template_name = 'bestiario/deletar.html'
     success_url = reverse_lazy('listar-criaturas')
+
+class CriaturasAPI(viewsets.ModelViewSet):
+    queryset = Criatura.objects.all()
+    serializer_class = CriaturaSerializer

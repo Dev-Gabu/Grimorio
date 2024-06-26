@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
 from fichas.models import Ficha
 from fichas.forms import FormularioFicha
+from fichas.serializers import FichaSerializer
 from django.urls import reverse_lazy
+from rest_framework import viewsets
 
 class ListarFichas(ListView):
 
@@ -42,3 +44,7 @@ class DeletarFichas(DeleteView):
     model = Ficha
     template_name = 'fichas/deletar.html'
     success_url = reverse_lazy('listar-fichas')
+
+class FichasAPI(viewsets.ModelViewSet):
+    queryset = Ficha.objects.all()
+    serializer_class = FichaSerializer

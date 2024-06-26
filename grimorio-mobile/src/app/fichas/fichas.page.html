@@ -1,8 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Fichas</ion-title>
+    <ion-title>
+      Fichas
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <div class="example-content">Listar Fichas</div>
+  <h1>Funcionandooo</h1>
+  <ion-list>
+    <ion-item *ngFor="let ficha of fichas">
+      <ion-thumbnail slot="start">
+        <img [src]="ficha.foto" alt="{{ ficha.nome }}">
+      </ion-thumbnail>
+
+      {{ ficha.nome }} - Rank {{ ficha.rank }}
+
+      <ion-button id="present-alert" size="small" shape="round" color="medium" slot="end">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
+
+      <ion-alert
+      trigger="present-alert"
+      header="{{ ficha.nome }}"
+      subHeader="Rank {{ ficha.rank }}"
+      message="{{ ficha.nivel }}"
+      [buttons]="alertButtons"
+    ></ion-alert>
+    
+    </ion-item>
+  </ion-list>
+
+ 
+
 </ion-content>

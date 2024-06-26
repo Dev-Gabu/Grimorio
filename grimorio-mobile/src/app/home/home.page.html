@@ -9,14 +9,6 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of items" [routerLink]="['/item-details', item.id]" routerDirection="forward">
-      <ion-alert
-      trigger="present-alert"
-      header="{{ item.nome }}"
-      subHeader="{{ item.durabilidade }}"
-      message="{{ item.descricao }}"
-      [buttons]="alertButtons"
-    ></ion-alert>
-
       <ion-thumbnail slot="start">
         <img [src]="item.foto" alt="{{ item.nome }}">
       </ion-thumbnail>
@@ -28,6 +20,15 @@
       <ion-button id="present-alert" size="small" shape="round" color="medium" slot="end">
         <ion-icon name="eye-outline"></ion-icon>
       </ion-button>
+
+      <ion-alert
+      trigger="present-alert"
+      header="{{ item.nome }}"
+      subHeader="{{ item.durabilidade }}"
+      message="{{ item.descricao }}"
+      [buttons]="alertButtons"
+    ></ion-alert>
+    
     </ion-item>
   </ion-list>
 
