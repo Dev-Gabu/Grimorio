@@ -2,10 +2,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import FileResponse, Http404
 from django.shortcuts import render
-from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from itens.models import Item
 from itens.forms import FormularioItem
 from django.urls import reverse_lazy
+from itens.serializers import ItemSerializer
+from rest_framework import viewsets
 
 class ListarItens(ListView):
 
@@ -43,3 +45,7 @@ class DeletarItens(DeleteView):
     model = Item
     template_name = 'item/deletar.html'
     success_url = reverse_lazy('listar-itens')
+
+class ItensAPI(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer

@@ -1,0 +1,7 @@
+{
+  "name": "grimorio-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
