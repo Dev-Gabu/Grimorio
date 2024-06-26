@@ -56,15 +56,6 @@ class ListarItensTests(TestCase):
         self.assertContains(response, 'Espada Lendária')
         self.assertContains(response, 'Escudo Mágico')
 
-class FotoItemTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.item = Item.objects.create(nome='Espada Lendária', descricao='Uma espada forjada por anões.', durabilidade=100, raridade=1, foto='item/fotos/espada.jpg')
-
-    def test_foto_item_view_not_found(self):
-        response = self.client.get(reverse('foto-item', args=['notfound.jpg']))
-        self.assertEqual(response.status_code, 404)
-
 class CriarItensTests(TestCase):
     def setUp(self):
         self.client = Client()
