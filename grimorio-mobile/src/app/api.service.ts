@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private itemUrl = 'http://localhost:8000/item/api/items';
-  private fichaUrl = 'http://localhost:8000/ficha/api/fichas';
+  private fichaUrl = 'http://localhost:8000/fichas/api/fichas';
   private criaturaUrl = 'http://localhost:8000/bestiario/api/criaturas';
 
   constructor(private http: HttpClient) { }

@@ -17,17 +17,9 @@
       
       {{ item.descricao }}
 
-      <ion-button id="present-alert" size="small" shape="round" color="medium" slot="end">
+      <ion-button size="small" shape="round" color="medium" slot="end">
         <ion-icon name="eye-outline"></ion-icon>
       </ion-button>
-
-      <ion-alert
-      trigger="present-alert"
-      header="{{ item.nome }}"
-      subHeader="{{ item.durabilidade }}"
-      message="{{ item.descricao }}"
-      [buttons]="alertButtons"
-    ></ion-alert>
     
     </ion-item>
   </ion-list>

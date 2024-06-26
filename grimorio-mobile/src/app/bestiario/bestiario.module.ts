@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { BestiarioPageRoutingModule } from './bestiario-routing.module';
@@ -13,8 +13,10 @@ import { BestiarioPage } from './bestiario.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BestiarioPageRoutingModule
+    BestiarioPageRoutingModule,
+    RouterModule.forChild([{ path: '', component: BestiarioPage }])
   ],
-  declarations: [BestiarioPage]
+  declarations: [BestiarioPage],
+  exports: [BestiarioPage]
 })
 export class BestiarioPageModule {}

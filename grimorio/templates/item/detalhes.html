@@ -1,15 +1,29 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Detalhes Item {% endblock %}
-    
-    {% block content %}
-    
-        <img src="{{ item.foto.url }}" class="card-img-top" width="200" height="200" alt="Image">
-        <h1>{{item.nome}}</h1>
-        <p>{{item.descricao}}</p>
-        <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-warning" href='/item/editar/{{criatura.id}}' type="button">Editar</a>
-            <a class="btn btn-danger" href='/item/deletar/{{criatura.id}}' type="button">Deletar</a>
-        </div>
+{% block titulo %} Detalhes Item {% endblock %}
 
-    {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ item.foto.url }}" class="card-img-top" alt="Imagem do Item">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">{{ item.nome }}</h1>
+                    <p class="card-text">{{ item.descricao }}</p>
+                    <p class="card-text"><strong>Durabilidade:</strong> {{ item.durabilidade }}</p>
+                    <p class="card-text"><strong>Raridade:</strong> {{ item.get_raridade_display }}</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-warning me-md-2" href='/item/editar/{{ item.id }}' type="button">Editar</a>
+                        <a class="btn btn-danger" href='/item/deletar/{{ item.id }}' type="button">Deletar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

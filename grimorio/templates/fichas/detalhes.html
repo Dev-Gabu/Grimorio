@@ -1,15 +1,33 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Detalhes Ficha {% endblock %}
-    
-    {% block content %}
-    
-        <img src="{{ ficha.foto.url }}" class="card-img-top" width="200" height="200" alt="Image">
-        <h1>{{ficha.nome}}</h1>
-        <p>{{ficha.descricao}}</p>
-        <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-warning" href='/ficha/editar/{{criatura.id}}' type="button">Editar</a>
-            <a class="btn btn-danger" href='/ficha/deletar/{{criatura.id}}' type="button">Deletar</a>
-        </div>
+{% block titulo %} Detalhes da Ficha {% endblock %}
 
-    {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ ficha.foto.url }}" class="card-img-top" alt="Imagem da Ficha">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">{{ ficha.nome }}</h1>
+                    <p class="card-text"><strong>Nível:</strong> {{ ficha.nivel }}</p>
+                    <p class="card-text"><strong>Experiência:</strong> {{ ficha.experiencia }}</p>
+                    <p class="card-text"><strong>Doragos:</strong> {{ ficha.doragos }}</p>
+                    <p class="card-text"><strong>Classe:</strong> {{ ficha.get_classe_display }}</p>
+                    <p class="card-text"><strong>Elemento:</strong> {{ ficha.get_elemento_display }}</p>
+                    <p class="card-text"><strong>Equipamento:</strong> {{ ficha.equipamento|linebreaks }}</p>
+                    <p class="card-text"><strong>Feitiços:</strong> {{ ficha.feiticos|linebreaks }}</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-warning me-md-2" href='/fichas/editar/{{ ficha.id }}' type="button">Editar</a>
+                        <a class="btn btn-danger" href='/fichas/deletar/{{ ficha.id }}' type="button">Deletar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

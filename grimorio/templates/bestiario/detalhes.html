@@ -1,16 +1,31 @@
 {% extends "../base.html" %}
 
-    {% block titulo %} Detalhes Ficha {% endblock %}
-    
-    {% block content %}
-        <div class="col-md-4">
-            <img src="{{ criatura.foto.url }}" class="card-img-top" width="200" height="200" alt="Image">
-            <h1>{{criatura.nome}}</h1>
-            <p>{{criatura.descricao}}</p>
-            <div class="d-grid gap-2 d-md-block">
-                <a class="btn btn-warning" href='/bestiario/editar/{{criatura.id}}' type="button">Editar</a>
-                <a class="btn btn-danger" href='/bestiario/deletar/{{criatura.id}}' type="button">Deletar</a>
+{% block titulo %} Detalhes da Criatura {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ criatura.foto.url }}" class="card-img-top" alt="Imagem da Criatura">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">{{ criatura.nome }}</h1>
+                    <p class="card-text"><strong>Rank:</strong> {{ criatura.rank }}</p>
+                    <p class="card-text"><strong>Descrição:</strong> {{ criatura.descricao|linebreaks }}</p>
+                    <p class="card-text"><strong>Experiência:</strong> {{ criatura.experiencia }}</p>
+                    <p class="card-text"><strong>Doragos:</strong> {{ criatura.doragos }}</p>
+                    <p class="card-text"><strong>Elemento:</strong> {{ criatura.get_nome_elemento }}</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-warning me-md-2" href='/bestiario/editar/{{ criatura.id }}' type="button">Editar</a>
+                        <a class="btn btn-danger" href='/bestiario/deletar/{{ criatura.id }}' type="button">Deletar</a>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
