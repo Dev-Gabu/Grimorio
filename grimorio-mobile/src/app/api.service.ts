@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class ApiService {
 
   getItems(): Observable<any> {
     return this.http.get(this.itemUrl);
+  }
+
+  getItemsContinuously(): Observable<any[]> {
+    return interval(5000).pipe( // Verifica a cada 5 segundos
+      switchMap(() => this.getItems())
+    );
   }
   
   getFichas(): Observable<any> {
