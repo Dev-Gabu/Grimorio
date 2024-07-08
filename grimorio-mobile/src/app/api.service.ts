@@ -27,8 +27,20 @@ export class ApiService {
     return this.http.get(this.fichaUrl);
   }
 
+  getFichasContinuously(): Observable<any[]> {
+    return interval(5000).pipe( // Verifica a cada 5 segundos
+      switchMap(() => this.getFichas())
+    );
+  }
+
   getCriaturas(): Observable<any> {
     return this.http.get(this.criaturaUrl);
+  }
+
+  getCriaturasContinuously(): Observable<any[]> {
+    return interval(5000).pipe( // Verifica a cada 5 segundos
+      switchMap(() => this.getCriaturas())
+    );
   }
 
 }
